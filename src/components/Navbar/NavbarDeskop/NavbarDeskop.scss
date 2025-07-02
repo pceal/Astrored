@@ -1,0 +1,89 @@
+@use '../../../styles/colors' as colors; 
+
+.navbar {
+  background-color: colors.$primary-purple; 
+  color: colors.$text-light; 
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 0; 
+
+  position: fixed; 
+  top: 0;          
+  left: 0;         
+  width: 100%;     
+  z-index: 1000;   
+  
+
+  
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+ 
+  .navbar-brand {
+    display: flex;
+    align-items: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: colors.$text-light; 
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      margin-right: 0.8rem;
+      fill: colors.$text-light; 
+      }
+    }
+  }
+
+ 
+  .nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 2rem;
+    margin-right: 3rem; 
+
+    li {
+      a {
+        color: colors.$text-light; 
+        text-decoration: none;
+        font-size: 1.1rem;
+        font-weight: 500;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: colors.$primary-purple; 
+          
+        }
+         &.active {
+      color: colors.$active-item-color;
+      }
+    }
+  }
+
+ 
+  @media (max-width: 768px) {
+    flex-direction: column; 
+    padding: 1rem;
+    border-radius: 0; 
+    margin: 0; 
+    
+    .navbar-brand {
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    .nav-links {
+      flex-direction: column;
+      gap: 0.8rem;
+      text-align: center;
+
+      li {
+        width: 100%;
+      }
+    }
+  }
+}
