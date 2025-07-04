@@ -36,9 +36,36 @@
       }
     }
   }
+.click-logout{
+     color: colors.$text-light !important;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 2rem;
+    margin-right: 3rem; 
 
- 
+    li {
+      a {
+        color: colors.$text-light; 
+        text-decoration: none;
+        font-size: 1.1rem;
+        font-weight: 500;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: colors.$primary-purple; 
+          
+        }
+         &.active {
+      color: colors.$active-item-color;
+      }
+    }
+  }
+}
+
   .nav-links {
+    color: colors.$text-light !important;
     list-style: none;
     margin: 0;
     padding: 0;

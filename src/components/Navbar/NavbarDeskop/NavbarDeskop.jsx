@@ -1,66 +1,110 @@
+import  { useEffect } from 'react';
+import { NavLink, Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
+import { logout, reset } from "../../../features/auth/authSlice"; 
+import { notification } from 'antd'; // Importa notification de antd
 
-
-//import React, { useContext } from 'react';
-import { Link, NavLink } from 'react-router-dom';
-//import './Navbar/NavbarDeskop/NavbarDeskop.scss'; // Importa los estilos Sass
-import "./NavbarDeskop.scss"; 
+import "./NavbarDeskop.scss";
 import logoMorado from '../../../assets/Icons/logo morado.JPG';
 
-
-// Placeholder para el UserContext (si usas Redux, esto sería diferente)
-// const UserContext = React.createContext(null); // Solo para que el ejemplo compile
-// Si tienes un UserContext real, impórtalo así:
-// import { UserContext } from '../../context/UserContext/UserState'; 
-
-
 const NavbarDeskop = () => {
-  // Ejemplo de cómo usarías el contexto para el logout
-  // const { user, logout } = useContext(UserContext); 
-  // const isAuthenticated = !!user; // Para mostrar/ocultar enlaces condicionalmente
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+const { user, isSuccess, isError, message } = useSelector((state) => state.auth);
 
-  // Placeholder para la función de logout
-  const handleLogout = () => {
-    console.log('Cerrar sesión (lógica de logout aquí)');
-    // Aquí llamarías a tu acción de Redux o función de contexto para cerrar sesión
-    // logout(); 
+  // DEBUG: Log para ver el estado del usuario en el Navbar
+  useEffect(() => {
+   console.log("NavbarDeskop - Estado del usuario:", user);
+  }, [user]);
+
+  // Si tienes variables como isSuccess, isError, message, reset, notification, asegúrate de importarlas y definirlas correctamente.
+  // El siguiente useEffect debe estar dentro del componente y no fuera de ningún hook.
+  useEffect(() => {
+    if (isSuccess && message === "Sesión cerrada correctamente") {
+      notification.success({
+        message: 'Sesión Cerrada',
+        description: message,
+      });
+      navigate('/'); // Redirige a la página de login después de un logout exitoso
+      dispatch(reset()); // Resetea el estado de Redux
+    } else if (isError && message) { // Muestra error solo si isError es true Y hay un mensaje
+      notification.error({
+        message: 'Error al cerrar sesión',
+        description: message,
+      });
+      dispatch(reset()); // Resetea el estado también en caso de error
+    }
+  }, [isSuccess, isError, message, navigate, dispatch]); // Dependencias del useEffect
+  
+  
+  
+  
+  
+  const logoutRedirect = () => {
+    dispatch(logout());
+    navigate("/");
   };
 
   return (
-   <nav className="navbar">
-
-      <Link to="/" className="navbar-brand">
-      
-        <img src={logoMorado} alt="Logo AstroHub" className="logo-icon" />
+    <nav className="navbar">
+      {/* Logo y Nombre de la Aplicación */}
+      <Link to="/" className="navbar-brand" title="Ir a la página de inicio">
+        <img src={logoMorado} alt="Logo AstroRed" className="logo-icon" />
         AstroRed
       </Link>
 
+      {/* Saludo del usuario centrado (cuando logueado) */}
+      {user && (
+       
+          <NavLink
+            to="/profile"
+            title="Ver tu perfil"
+            className={({ isActive }) => (isActive ? 'navbar-link active' : 'navbar-link')}
+          >
+            Hola {user.username}!
+          </NavLink>
+       
+      )}
 
-      
+      {/* Enlaces de Navegación (Home, Login/Logout) */}
       <ul className="nav-links">
-       <li>
-          {/* Usa NavLink para el enlace "Home" */}
-          <NavLink 
-            to="/" 
+        <li>
+          <NavLink
+            to="/"
             title="Ir a la página de inicio"
             className={({ isActive }) => (isActive ? 'navbar-link active' : 'navbar-link')}
           >
             Home
           </NavLink>
         </li>
-        
-        {/* Ejemplo de enlace condicional si el usuario está autenticado */}
-        {/* {isAuthenticated && ( */}
+        {user ? ( // Si el usuario está logueado
           <li>
-  <NavLink to="/profile" title="Ver tu perfil" className={({ isActive }) => (isActive ? 'navbar-link active' : 'navbar-link')}>Profile</NavLink>
-</li>
-
-<li>
-  <NavLink to="/login" onClick={handleLogout} title="Iniciar sesión" className={({ isActive }) => (isActive ? 'navbar-link active' : 'navbar-link')}>Login</NavLink>
-</li>
+            <div  className="click-logout"
+              onClick={logoutRedirect}
+             
+              title="Cerrar sesión"
+      
+            >
+              Logout
+            </div>
+          </li>
+          
+        ) : ( // Si el usuario NO está logueado
+          <li>
+            <NavLink
+              to="/login" // Enlace a la ruta donde tienes Login y Register juntos
+              title="Iniciar sesión"
+              className={({ isActive }) => (isActive ? 'navbar-link active' : 'navbar-link')}
+            >
+              Login
+            </NavLink>
+          </li>
+        )}
       </ul>
     </nav>
   );
 };
 
+export default NavbarDeskop;
 
-export default NavbarDeskop
+
