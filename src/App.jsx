@@ -9,6 +9,7 @@ import Home from './components/Home/Home';
 import Login from './components/Login/Login'; 
 import Profile from './components/Profile/Profile'; 
 import Register from './components/Register/Register';
+import PostDetail from './components/PostDetail/PostDetail';
 
 function App() {
   return (
@@ -29,10 +30,11 @@ function App() {
           />
            <Route path="/register" element={
             <div>
-              <Register /> {/* Solo renderiza el componente de Registro aquí */}
+              <Register /> 
             </div>
           } />
           <Route path="/profile" element={<Profile />} />
+           <Route path="/posts/id/:_id" element={<PostDetail />} />
         </Routes>
         <FooterDeskop />
       </>

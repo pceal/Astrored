@@ -1,12 +1,17 @@
-import React from 'react'
+import React from 'react';
+// ¡CORRECCIÓN CLAVE AQUÍ! La ruta debe apuntar a la carpeta 'Posts' (en plural)
+// y al archivo 'Posts.jsx' (también en plural).
+import Posts from "../Posts/Posts"; // Asumiendo que Posts.jsx está en src/components/Posts/
 
 const Home = () => {
   return (
-     <div style={{ padding: '2rem', textAlign: 'center', marginTop: '20px' }}>
-        <h2>¡Navbar de AstroHub cargada!</h2>
-        <p>Esta es solo una vista previa de la Navbar sin rutas configuradas.</p>
-      </div>
-  )
-}
+    <div style={{ padding: '2rem', textAlign: 'center', marginTop: '20px' }}>
+      <h2>¡Bienvenido a AstroRed!</h2>
+      <p>Explora las últimas publicaciones de la comunidad.</p>
+      <Posts /> {/* Aquí se renderizarán todas las publicaciones */}
+    </div>
+  );
+};
 
-export default Home
+export default Home;
+
