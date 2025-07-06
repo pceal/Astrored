@@ -39,7 +39,16 @@ const PostDetail = () => {
   if (!post || Object.keys(post).length === 0) {
     return <div className="text-center p-4">No se encontró la publicación o está vacía.</div>;
   }
-
+ console.log("Post cargado para renderizar:", post);
+  console.log("Valor de post.images:", post.images);
+  if (post.images && post.images.length > 0) {
+    console.log("Valor de post.images[0]:", post.images[0]);
+    console.log("URL de imagen final que se intentará cargar:", `http://localhost:8080${post.images[0]}`);
+  
+  } else {
+    console.log("Post no tiene imágenes o el array de imágenes está vacío.");
+  }
+  //
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100 p-4">
       <Card 
@@ -49,6 +58,17 @@ const PostDetail = () => {
       >
         <p className="text-gray-700 text-base leading-relaxed">{post.content || "Contenido no disponible."}</p>
         {post.author && <p className="text-gray-500 text-sm mt-4">Autor: {post.author.username}</p>}
+        {post.images && post.images.length > 0 && ( 
+  <div className="mt-3">
+    <img
+     
+      src={`http://localhost:8080${post.images[0]}`} 
+      alt={post.title}
+      className="w-full h-48 object-cover rounded-md"
+      onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/400x200/cccccc/333333?text=No+Image"; }}
+    />
+  </div>
+)}
       </Card>
     </div>
   );

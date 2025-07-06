@@ -13,6 +13,19 @@ const getById = async (_id) => {
   return res.data;
 };
 
+const createPost = async (postData, token) => {
+  
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`, 
+      'Content-Type': 'multipart/form-data', 
+    },
+  };
+
+ 
+  const res = await axios.post(API_URL, postData, config);
+  return res.data;
+};
 /*const getPostByName = async (postName) => {
   const res = await axios.get(`${API_URL}/title/${postName}`);
   return res.data;
@@ -21,6 +34,7 @@ const getById = async (_id) => {
 const postService = {
   getAll,
   getById,
+  createPost,
   //getPostByName,
 };
 

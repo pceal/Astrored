@@ -10,8 +10,9 @@ const Posts = () => {
   const { posts, isLoading, isError, message } = useSelector((state) => state.posts);
 
   useEffect(() => {
-    dispatch(reset());
     console.log("DEBUG Posts.jsx (useEffect): Despachando la acción getAll() para cargar publicaciones.");
+    //dispatch(reset());
+    
     dispatch(getAll());
 
     return () => {
@@ -19,10 +20,10 @@ const Posts = () => {
     };
   }, []);
 
-  //console.log("Posts.jsx (render): Estado actual de 'posts' (del slice):", posts);
-  //console.log("Posts.jsx (render): Estado actual de 'isLoading':", isLoading);
-  //console.log("Posts.jsx (render): Estado actual de 'isError':", isError);
- // console.log("Posts.jsx (render): Mensaje actual:", message);
+  console.log("Posts.jsx (render): Estado actual de 'posts' (del slice):", posts);
+  console.log("Posts.jsx (render): Estado actual de 'isLoading':", isLoading);
+  console.log("Posts.jsx (render): Estado actual de 'isError':", isError);
+ console.log("Posts.jsx (render): Mensaje actual:", message);
 
   if (isLoading) {
     return (

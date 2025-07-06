@@ -39,8 +39,33 @@ export const getById = createAsyncThunk("post/getById", async (_id, thunkAPI) =>
   }
 });
 
+export const createPost = createAsyncThunk(
+  "post/createPost",
+  async (postData, thunkAPI) => {
+    try {
+   
+      const token = thunkAPI.getState().auth.token; 
+
+      if (!token) {
+        throw new Error("No autorizado, no hay token");
+      }
+
+      const data = await postService.createPost(postData, token);
+      return data;
+    } catch (error) {
+      const message =
+        (error.response && error.response.data && error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+
+
 export const postSlice = createSlice({
-  name: "post", // El nombre interno del slice sigue siendo "post" (singular)
+  name: "posts", 
   initialState,
   reducers: {
     reset: (state) => {
@@ -48,7 +73,8 @@ export const postSlice = createSlice({
       state.isSuccess = false;
       state.isError = false;
       state.message = "";
-      state.posts = []; // Vacía el array de posts al resetear
+      //state.posts = []; // Vacía el array de posts al resetear
+      // Object.assign(state, initialState); 
     },
   },
   extraReducers: (builder) => {
@@ -95,9 +121,29 @@ export const postSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
         state.post = null; 
+      })
+       .addCase(createPost.pending, (state) => {
+        state.isLoading = true;
+        state.isError = false;
+        state.isSuccess = false;
+        state.message = "Creando publicación...";
+      })
+      .addCase(createPost.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.message = "Publicación creada exitosamente.";
+        state.posts.push(action.payload);
+      })
+      .addCase(createPost.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload || "Error al crear la publicación.";
+        state.isSuccess = false;
       });
   },
 });
+
+
 
 export const { reset } = postSlice.actions; 
 export default postSlice.reducer;
