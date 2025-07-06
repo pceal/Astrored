@@ -59,6 +59,18 @@ export const createPost = createAsyncThunk(
         error.toString();
       return thunkAPI.rejectWithValue(message);
     }
+   
+  }
+);
+
+export const searchByTitle = createAsyncThunk(
+  "post/searchByTitle",
+  async (postName) => {
+    try {
+      return await postService.searchByTitle(postName);
+    } catch (error) {
+      console.log(error);
+    }
   }
 );
 
@@ -139,7 +151,19 @@ export const postSlice = createSlice({
         state.isError = true;
         state.message = action.payload || "Error al crear la publicación.";
         state.isSuccess = false;
-      });
+      })
+       .addCase(searchByTitle.fulfilled, (state, action) => {
+        // SOLUCIÓN --> Si la búsqueda devuelve un solo post, lo guardamos como array
+        //state.posts = Array.isArray(action.payload) //SI es un array
+         // ? action.payload //guarda el array
+         // : [action.payload]; // si no lo es --> Envuelve el objeto en un array
+         state.isLoading = false;
+  state.isSuccess = true;
+  state.isError = false;
+  state.message = "Búsqueda completada!";
+  state.posts = action.payload; // <-- Asegúrate de que action.payload sea directamente el array de posts
+})
+     
   },
 });
 

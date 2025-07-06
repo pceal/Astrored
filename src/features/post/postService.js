@@ -26,16 +26,16 @@ const createPost = async (postData, token) => {
   const res = await axios.post(API_URL, postData, config);
   return res.data;
 };
-/*const getPostByName = async (postName) => {
-  const res = await axios.get(`${API_URL}/title/${postName}`);
+const searchByTitle = async (title) => {
+  const res = await axios.get(`${API_URL}/search?title=${title}`);
   return res.data;
-};*/
+};
 
 const postService = {
   getAll,
   getById,
   createPost,
-  //getPostByName,
+  searchByTitle,
 };
 
 export default postService;
