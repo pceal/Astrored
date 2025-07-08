@@ -26,8 +26,8 @@ const FooterDeskop = () => {
           © {new Date().getFullYear()} AstroRed - Conectando almas bajo las estrellas
         </p>
         <div className="footer-links">
-          <Link to="/about" className="footer-link">Sobre nosotros</Link>
-          <Link to="/terms" className="footer-link">Términos y condiciones</Link>
+          <Link to="/about" className="footer-link-us">Sobre nosotros</Link>
+          <Link to="/terms" className="footer-link-terms">Términos y condiciones</Link>
         </div>
       </div>
     </footer>

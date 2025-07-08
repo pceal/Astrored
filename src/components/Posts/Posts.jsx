@@ -4,6 +4,7 @@ import { getAll, reset } from '../../features/post/postSlice';
 import { Spin, notification } from 'antd'; 
 import Post from '../Post/Post'; 
 
+
 const Posts = () => {
   const dispatch = useDispatch();
  
@@ -58,14 +59,26 @@ const Posts = () => {
   }
 
   return (
-    <div style={{ maxWidth: '1200px', margin: 'auto', padding: '20px' }}>
-      <h3 style={{ textAlign: 'center', marginBottom: '30px', fontSize: '2rem', color: '#333' }}>Todas las Publicaciones</h3>
-      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '20px' }}>
-        <Post /> 
-      </div>
+
+    <div 
+      style={{ 
+        display: 'flex', 
+        flexDirection: 'column', 
+        alignItems: 'center',   
+        gap: '20px',           
+        padding: '20px',        
+        width: '100%',          
+        maxWidth: '1200px',     
+        margin: '0 auto'        
+      }}
+    >
+      {posts.map((post) => (
+        <Post key={post._id} post={post} />
+      ))}
     </div>
   );
 };
+
 
 export default Posts;
 

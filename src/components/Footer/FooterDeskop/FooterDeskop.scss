@@ -8,6 +8,7 @@
   flex-direction: column; // Apila el contenido (copyright y enlaces)
   align-items: center; // Centra el contenido horizontalmente
   justify-content: center; // Centra el contenido verticalmente
+  gap: 0.5rem;
   
   // Posicionamiento fijo en la parte inferior
   position: fixed; // Fija el footer en la ventana del navegador
@@ -19,7 +20,7 @@
   border-radius: 0; // Sin bordes redondeados para ocupar todo el ancho
   box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.2); // Sombra hacia arriba
   text-align: center; // Alinea el texto al centro
-
+ height: 60px;
   // Contenido principal del footer (copyright y enlaces)
   .footer-content {
     position: relative; // Para que los iconos puedan posicionarse absolutamente respecto a este
@@ -33,12 +34,13 @@
 
   .footer-links {
     display: flex;
-    gap: 1.5rem; // Espacio entre los enlaces
+    gap: 0.5rem; // Espacio entre los enlaces
     margin-left: 3rem;
+   
    
   
     
-    .footer-link {
+    .footer-link-terms {
       color: colors.$text-light;
       text-decoration: none;
       font-size: 0.9rem;
@@ -48,7 +50,18 @@
       
      
     }
-  }
+  
+  .footer-link-us {
+      color: colors.$text-light;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.3s ease;}
+       margin-top: 0rem;
+     
+      
+     
+    }
 
   // Estilos para los iconos de astrología (posicionados absolutamente)
   .footer-icon {
@@ -56,7 +69,8 @@
     width: 60px; // Tamaño de los iconos
     height: 60px;
     opacity: 0.15; // Ligeramente transparentes
-    color: colors.$text-light; // Color de los iconos
+    color: colors.$text-light; 
+    // Color de los iconos
 
     // Posicionamiento individual de cada icono
     &.icon-aries { top: 10%; left: 5%; transform: rotate(15deg); }
