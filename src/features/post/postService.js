@@ -27,7 +27,7 @@ const createPost = async (postData, token) => {
   return res.data;
 };
 const searchByTitle = async (title) => {
-  const res = await axios.get(`${API_URL}/search?title=${title}`);
+  const res = await axios.get(`${API_URL}search?title=${title}`);
   return res.data;
 };
 

@@ -24,7 +24,7 @@ const CreatePostForm = () => {
       form.resetFields(); 
       setFileList([]); 
       dispatch(reset()); 
-      navigate('/'); 
+      //navigate('/'); 
     }
     if (isError) {
       AntMessage.error(message);

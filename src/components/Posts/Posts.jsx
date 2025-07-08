@@ -1,6 +1,6 @@
 import  { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAll, reset } from '../../features/post/postSlice'; 
+import { getAll,reset } from '../../features/post/postSlice'; 
 import { Spin, notification } from 'antd'; 
 import Post from '../Post/Post'; 
 
@@ -11,26 +11,25 @@ const Posts = () => {
   const { posts, isLoading, isError, message } = useSelector((state) => state.posts);
 
   useEffect(() => {
-    console.log("DEBUG Posts.jsx (useEffect): Despachando la acción getAll() para cargar publicaciones.");
-    //dispatch(reset());
+    
     
     dispatch(getAll());
 
     return () => {
+      dispatch(reset());
     
     };
-  }, []);
+  }, [dispatch]);
 
-  console.log("Posts.jsx (render): Estado actual de 'posts' (del slice):", posts);
-  console.log("Posts.jsx (render): Estado actual de 'isLoading':", isLoading);
-  console.log("Posts.jsx (render): Estado actual de 'isError':", isError);
- console.log("Posts.jsx (render): Mensaje actual:", message);
+  //console.log("Posts.jsx (render): Estado actual de 'posts' (del slice):", posts);
+ // console.log("Posts.jsx (render): Estado actual de 'isLoading':", isLoading);
+  //console.log("Posts.jsx (render): Estado actual de 'isError':", isError);
+ //console.log("Posts.jsx (render): Mensaje actual:", message);
 
   if (isLoading) {
     return (
-      <div style={{ textAlign: 'center', padding: '40px' }}>
-        <Spin size="large" />
-        <p style={{ marginTop: '15px', fontSize: '1.1rem', color: '#555' }}>Cargando publicaciones...</p>
+      <div style={{ textAlign: 'center', padding: '20px' }}> {/* Contenedor para Spin */}
+        <Spin tip="Buscando..." size="large" /> {/* Aquí usas 'tip' */}
       </div>
     );
   }

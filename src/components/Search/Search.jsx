@@ -7,7 +7,7 @@ import { SearchOutlined } from "@ant-design/icons";
 
 const { Search: AntdSearch } = Input; // Renombra Input.Search para evitar conflictos
 
-const Search = () => { // Renombrado a SearchComponent para evitar conflicto con la ruta
+const Search = () => { 
   const dispatch = useDispatch();
   const { posts, isLoading, isError, message } = useSelector((state) => state.posts); // Obtén los posts del estado
 
@@ -18,7 +18,7 @@ const Search = () => { // Renombrado a SearchComponent para evitar conflicto con
     return () => {
       dispatch(reset()); // Limpia el estado de posts al salir de la página de búsqueda
     };
-  }, [dispatch]);
+  }, []);
 
   // Función para manejar la búsqueda cuando el usuario presiona Enter o el botón de búsqueda
   const handleSearch = (value) => {
@@ -34,14 +34,17 @@ const Search = () => { // Renombrado a SearchComponent para evitar conflicto con
   return (
     <div className="p-4 max-w-2xl mx-auto">
       <h2 className="text-2xl font-bold text-center mb-6">Buscar Publicaciones</h2>
-      <AntdSearch
+ <AntdSearch
         placeholder="Introduce el título del post a buscar..."
         allowClear
         enterButton={<Button type="primary" icon={<SearchOutlined />}>Buscar</Button>}
-        size="large"
+        size="middle"
         onSearch={handleSearch} // Llama a handleSearch cuando se busca
-        className="mb-6"
+        // --- ¡CAMBIO CLAVE AQUÍ! Ajusta el ancho usando el prop 'style' ---
+        style={{ width: 700 }} // Establece el ancho a 200px. Puedes cambiar este valor.
+        className="mb-6 max-w-full" // Mantenemos max-w-full si tienes CSS responsivo general
       />
+
 
       {isLoading && <Spin tip="Buscando..." className="block text-center my-4" />}
       {isError && <Alert message="Error en la búsqueda" description={message} type="error" showIcon className="my-4" />}

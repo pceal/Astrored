@@ -38,7 +38,7 @@ export const authSlice = createSlice({
         state.isSuccess = true; 
         state.user = null;
         state.token = null;
-        //state.message = "Sesión cerrada correctamente"; // Mensaje de éxito para el logout
+        state.message = "Sesión cerrada correctamente"; // Mensaje de éxito para el logout
         localStorage.removeItem("user"); // Limpia localStorage
         localStorage.removeItem("token"); ;
       })

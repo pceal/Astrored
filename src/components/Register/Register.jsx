@@ -88,7 +88,7 @@ const Register = () => {
           placeholder="password2"
           onChange={onChange}
         />
-      
+       
         <a href="#" className="add-photo-link">
           + Add a profile photo
         </a>

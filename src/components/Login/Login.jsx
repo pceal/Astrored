@@ -21,20 +21,15 @@ const Login = () => {
 
   const { user, isSuccess, isError, message } = useSelector((state) => state.auth);
 
-  // You may need to get these from your Redux state or props
-
-
-  // For now, let's assume they are available in scope
-
-  useEffect(() => {
-     console.log("DEBUG useEffect (Login):");
-    console.log("  isSuccess:", isSuccess);
-    console.log("  isError:", isError);
-    console.log("  user:", user);
-    console.log("  message:", message);
+     useEffect(() => {
+     //console.log("DEBUG useEffect (Login):");
+    //console.log("  isSuccess:", isSuccess);
+    //console.log("  isError:", isError);
+    //console.log("  user:", user);
+    //console.log("  message:", message);
     if (isSuccess && user) { // Verifica también que el usuario exista
       notification.success({
-        message: 'Login Exitoso', // Mensaje de éxito para el usuario
+        //message: 'Login Exitoso', // Mensaje de éxito para el usuario
         description: `Bienvenido de nuevo, ${user.username || user.email}!`, // Personaliza el mensaje
       });
       navigate("/"); 
@@ -69,22 +64,22 @@ const Login = () => {
   };*/
    const handleRegisterClick = () => {
     //console.log("DEBUG: Botón 'Register' presionado. Intentando navegar a /register.");
-    navigate('/register'); // Navega a la ruta '/register'
+    navigate('/register'); 
   };
 
   return (
-       <div className="login-container"> {/* Aplica la clase contenedora aquí */}
-      <h2>Login</h2> {/* Título "Login" */}
+       <div className="login-container"> 
+      <h2>Login</h2> 
       <form onSubmit={onSubmit}>
         <div className="form-group">
-          <label htmlFor="email">Username</label> {/* Etiqueta "Username" como en la imagen */}
+          <label htmlFor="email">email</label> 
           <input
-            type="email" // Aunque la etiqueta diga Username, el input es tipo email para el login
+            type="email" 
             id="email"
             name="email"
             value={email}
             onChange={onChange}
-            placeholder="Introduce tu email" // Placeholder genérico
+            placeholder="Introduce tu email" 
             required
           />
         </div>
@@ -103,12 +98,21 @@ const Login = () => {
         <button type="submit">Login</button>
       </form>
       
-      {/* Sección "Not registered yet?" y botón Register */}
       <p>Not registered yet?</p>
-      <button 
-        type="button" // Importante: type="button" para que no envíe el formulario principal
-       onClick={handleRegisterClick} 
-        className="register-button"
+    <button 
+        type="submit" 
+        onClick={handleRegisterClick} 
+        style={{ 
+          backgroundColor: '#007bff', 
+          color: 'white',             
+          padding: '10px 20px',       
+          border: 'none',             
+          borderRadius: '5px',        
+          cursor: 'pointer',         
+          fontSize: '16px',          
+          fontWeight: 'bold',         
+          transition: 'background-color 0.3s ease' 
+        }}
       >
         Register
       </button>

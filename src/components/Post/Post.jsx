@@ -40,7 +40,9 @@ console.log("Post.jsx: Estado actual del usuario (desde Redux):", user);
       alert("Debes iniciar sesión para dar 'Me gusta'."); 
       return;
     }
-    dispatch(likePost(post._id)); 
+   console.log("DEBUG Post.jsx: Despachando likePost para post ID:", post._id);
+      dispatch(likePost(post._id)); 
+      console.log("DEBUG Post.jsx: likePost despachado.");
   };
   
     return (

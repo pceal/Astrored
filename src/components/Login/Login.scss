@@ -13,6 +13,7 @@
   width: 80%;
   max-width: 500px; 
   margin: 2rem auto; 
+  width: 500px;
 
   h2 {
     color: #333; 
@@ -72,6 +73,7 @@
         transform: translateY(0); 
     }
   }
+  
 
   p { 
     margin-top: 1.5rem;
@@ -79,25 +81,7 @@
     font-size: 0.95rem;
   }
 
-  .register-button { 
-    background-color: colors.$primary-purple; 
-    color: colors.$text-light;
-    padding: 0.8rem 1.5rem; 
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    margin-top: 1rem; 
-
-    &:hover {
-      background-color: colors.$primary-purple;
-      transform: translateY(-2px);
-    }
-    &:active {
-      transform: translateY(0);
-    }
-  }
+  
+      
 }
 }

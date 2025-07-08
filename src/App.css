@@ -110,3 +110,62 @@ body {
 
 
 }
+
+@media (max-width: 768px) {
+  .home-page-container {
+    padding: 20px 15px; /* Menos padding en pantallas pequeñas */
+  }
+
+  .home-create-posts {
+    /* Cambia a una sola columna para pantallas pequeñas */
+    grid-template-columns: 1fr; 
+    gap: 20px; /* Reduce el gap */
+  }
+
+  .home-create {
+    grid-column: 1; /* Asegura que ocupe toda la columna */
+    justify-content: center; /* Centra el formulario de creación */
+  }
+
+  .posts-wellcome {
+    grid-column: 1; /* Asegura que ocupe toda la columna */
+    padding: 20px; /* Reduce el padding */
+    width: 100%; /* Asegura que ocupe todo el ancho disponible */
+    max-width: none; /* Elimina el max-width fijo para que se adapte */
+  }
+
+  .welcome-title {
+    font-size: 2em; /* Reduce el tamaño del título */
+  }
+
+  .welcome-description {
+    font-size: 1em; /* Reduce el tamaño de la descripción */
+  }
+
+  .home-posts {
+    grid-column: 1; /* Asegura que ocupe toda la columna */
+    padding: 20px; /* Reduce el padding */
+    width: 100%; /* Asegura que ocupe todo el ancho disponible */
+    max-width: none; /* Elimina el max-width fijo para que se adapte */
+  }
+}
+
+/* Para pantallas muy pequeñas (ej. móviles, hasta 480px de ancho) */
+@media (max-width: 480px) {
+  .home-page-container {
+    padding: 15px 10px; /* Más reducción de padding */
+  }
+
+  .welcome-title {
+    font-size: 1.8em; /* Más reducción de tamaño de título */
+  }
+
+  .welcome-description {
+    font-size: 0.9em; /* Más reducción de tamaño de descripción */
+  }
+
+  .posts-wellcome,
+  .home-posts {
+    padding: 15px; /* Más reducción de padding */
+  }
+}
