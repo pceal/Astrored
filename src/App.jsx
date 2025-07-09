@@ -13,17 +13,19 @@ import PostDetail from './components/PostDetail/PostDetail';
 import Admin from './components/Admin/Admin';
 import PrivateZone from './components/Guards/PrivateZone';
 import AdminZone from './components/Guards/AdminZone';
+import Search from './components/Search/Search'; 
 
 function App() {
   return (
     <BrowserRouter>
-      {/*style={{ display: 'flex', justifyContent: 'center', gap: '2rem', padding: '2rem', flexWrap: 'wrap' }}>*/}
+      
       <>
         <div className="app-container"> 
         <NavbarDeskop />
         <div className="app-content-wrapper"> 
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path='/search' element={<Search />} /> 
           <Route
             path="/login"
             element={
@@ -42,6 +44,7 @@ function App() {
            <Route path="/posts/id/:_id" element={<PostDetail />} />
           <Route path="/admin" element={<AdminZone><Admin /></AdminZone>} />
         </Routes>
+        
         </div>
         <FooterDeskop />
          </div>

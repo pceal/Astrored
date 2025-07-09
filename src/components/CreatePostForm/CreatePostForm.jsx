@@ -3,17 +3,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createPost, reset } from '../../features/post/postSlice'; 
 import { Input, Button, Form, Upload, message as AntMessage, Spin, Alert } from 'antd'; 
 import { UploadOutlined } from '@ant-design/icons'; 
-import { useNavigate } from 'react-router-dom'; 
+
 
 const { TextArea } = Input;
 
 const CreatePostForm = () => {
   const [form] = Form.useForm(); 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+
 
   
-  const { isLoading, isError, isSuccess, message } = useSelector((state) => state.posts); // Asume que tu slice se llama 'posts'
+  const { isLoading, isError, isSuccess, message } = useSelector((state) => state.posts); 
 
   const [fileList, setFileList] = useState([]); 
 
@@ -30,7 +30,7 @@ const CreatePostForm = () => {
       AntMessage.error(message);
       dispatch(reset()); 
     }
-  }, [isSuccess, isError, message, dispatch, form, navigate]);
+  }, [isSuccess, isError, message, dispatch, form, ]); //navigate
 
  
   const handleFileChange = ({ fileList: newFileList }) => {

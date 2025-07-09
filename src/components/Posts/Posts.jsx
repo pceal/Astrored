@@ -9,6 +9,10 @@ const Posts = () => {
   const dispatch = useDispatch();
  
   const { posts, isLoading, isError, message } = useSelector((state) => state.posts);
+  console.log("Posts.jsx: Componente renderizado. Longitud actual de 'posts' (desde Redux):", posts.length);
+
+
+
 
   useEffect(() => {
     
@@ -19,12 +23,9 @@ const Posts = () => {
       dispatch(reset());
     
     };
-  }, [dispatch]);
+  }, [dispatch ]);
 
-  //console.log("Posts.jsx (render): Estado actual de 'posts' (del slice):", posts);
- // console.log("Posts.jsx (render): Estado actual de 'isLoading':", isLoading);
-  //console.log("Posts.jsx (render): Estado actual de 'isError':", isError);
- //console.log("Posts.jsx (render): Mensaje actual:", message);
+
 
   if (isLoading) {
     return (
