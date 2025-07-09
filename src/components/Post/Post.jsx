@@ -1,4 +1,4 @@
-
+import React from 'react';
 import { Card, Avatar, Button} from 'antd'; 
 import { Link } from 'react-router-dom';
 import { likePost } from "../../features/post/postSlice";
@@ -8,19 +8,21 @@ import { HeartFilled, HeartOutlined } from '@ant-design/icons';
 
 const Post = ({ post }) => { 
 
-if (!post || typeof post !== 'object' || Object.keys(post).length === 0) {
+  console.log("Post.jsx está recibiendo el siguiente objeto 'post':", post);
+  
+  if (!post || typeof post !== 'object' || Object.keys(post).length === 0) {
     console.warn("Post.jsx: No se recibió un objeto 'post' válido. No se renderizará.");
     return null;
   }
 
 
-  const backendBaseUrl = "http://localhost:8080/posts/"; // Asegúrate de que esta URL sea correcta para tu backend
+  const backendBaseUrl = "http://localhost:8080";
 
 
   const imageUrl = post.images && Array.isArray(post.images) && post.images.length > 0
     ? `${backendBaseUrl}${post.images[0]}`
     : "https://placehold.co/600x400/cccccc/333333?text=No+Image";
-
+ console.log(`Intentando cargar imagen para post ID: ${post._id || 'N/A'}, Título: ${post.title || 'N/A'}. URL: ${imageUrl}`);
 
   const authorName = post.author?.username || "Usuario Desconocido";
   const authorImage = post.author?.image || `https://api.dicebear.com/7.x/initials/svg?seed=${authorName}`;
@@ -28,25 +30,18 @@ if (!post || typeof post !== 'object' || Object.keys(post).length === 0) {
 const postDate = post.createdAt ? new Date(post.createdAt).toLocaleDateString() : "Fecha Desconocida";
 const dispatch = useDispatch();
 const { user } = useSelector((state) => state.auth);
-console.log(`Post.jsx (Post ID: ${post._id}):`);
-  console.log("  Usuario autenticado (user):", user);
-  console.log("  Likes del post (post.likes):", post.likes);
-  console.log("  ID del usuario logueado (user?._id):", user?._id);
-const hasLiked = user && post.likes && Array.isArray(post.likes) && post.likes.includes(user._id);
+console.log("Post.jsx: Estado actual del usuario (desde Redux):", user); 
+  const hasLiked = user && post.likes && Array.isArray(post.likes) && post.likes.includes(user._id);
    
-const handleLike = (e) => {
-  e.stopPropagation(); 
-  e.preventDefault();
-  if (!user) {
-    notification.warning({ 
-      message: 'Acceso Denegado',
-      description: 'Debes iniciar sesión para dar "Me gusta".',
-      placement: 'topRight', //  la posición 
-    });
-    return;
-  }
-  dispatch(likePost(post._id)); 
-};
+  const handleLike = (e) => {
+    e.stopPropagation(); 
+    e.preventDefault();
+     if (!user) {
+      alert("Debes iniciar sesión para dar 'Me gusta'."); 
+      return;
+    }
+    dispatch(likePost(post._id)); 
+  };
   
     return (
     <Card
@@ -109,4 +104,6 @@ const handleLike = (e) => {
 };
 
 export default Post;
+
+
 

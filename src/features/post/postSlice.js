@@ -121,9 +121,9 @@ export const likePost = createAsyncThunk(
       const token = authState.token; 
       const user = authState.user; 
 
-      console.log("Frontend (postSlice - likePost thunk): Estado auth completo:", authState);
-      console.log("Frontend (postSlice - likePost thunk): Objeto user extraído:", user); 
-      console.log("Frontend (postSlice - likePost thunk): Token extraído de Redux para like:", token);
+     // console.log("Frontend (postSlice - likePost thunk): Estado auth completo:", authState);
+      //console.log("Frontend (postSlice - likePost thunk): Objeto user extraído:", user); 
+      //console.log("Frontend (postSlice - likePost thunk): Token extraído de Redux para like:", token);
       
       if (!token) {
         console.error("Frontend (postSlice - likePost thunk): Token no encontrado. No se puede dar like.");
@@ -259,57 +259,55 @@ export const postSlice = createSlice({
       .addCase(likePost.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-  
+        state.message = "Me gusta actualizado.";
         
-     
-  
+        //console.log("postSlice (likePost.fulfilled): Payload recibido:", action.payload);
+
+        
+        const postIndexInPosts = state.posts.findIndex(post => post._id === action.payload._id);
+        if (postIndexInPosts !== -1) {
+          // Si el post se encuentra, reemplázalo con el objeto actualizado recibido del backend
+          state.posts[postIndexInPosts] = action.payload; 
+          //console.log("postSlice (likePost.fulfilled): Post actualizado en el array 'posts'.");
+        } else {
+          //console.warn("postSlice (likePost.fulfilled): Post no encontrado en el array 'posts' para actualizar. ID:", action.payload._id);
+        }
 
        
         const postIndexInUserPosts = state.userPosts.findIndex(post => post._id === action.payload._id);
         if (postIndexInUserPosts !== -1) {
           state.userPosts[postIndexInUserPosts] = action.payload;
           //console.log("postSlice (likePost.fulfilled): Post actualizado en el array 'userPosts'.");
-       // } else {
+        } else {
          // console.warn("postSlice (likePost.fulfilled): Post no encontrado en el array 'userPosts' para actualizar.");
         }
 
-      
+        // Actualiza el post individual en 'state.post' (si estás en la vista de detalle de un post)
         if (state.post && state.post._id === action.payload._id) {
           state.post = action.payload;
-          console.log("postSlice (likePost.fulfilled): Post individual actualizado en 'state.post'.");
+          //console.log("postSlice (likePost.fulfilled): Post individual actualizado en 'state.post'.");
         } else {
-            console.warn("postSlice (likePost.fulfilled): Post individual NO actualizado en 'state.post' (ID no coincide o state.post es nulo). ID:", action.payload._id);
+           // console.warn("postSlice (likePost.fulfilled): Post individual NO actualizado en 'state.post' (ID no coincide o state.post es nulo). ID:", action.payload._id);
         }
 
         // Logs de depuración para verificar el estado después de la actualización
-        console.log("postSlice (likePost.fulfilled): Estado 'posts' DESPUÉS de la actualización:", JSON.parse(JSON.stringify(state.posts)));
-        console.log("postSlice (likePost.fulfilled): Estado 'post' DESPUÉS de la actualización:", JSON.parse(JSON.stringify(state.post)));
-        console.log("postSlice (likePost.fulfilled): Estado 'userPosts' DESPUÉS de la actualización:", JSON.parse(JSON.stringify(state.userPosts)));
+        //console.log("postSlice (likePost.fulfilled): Estado 'posts' DESPUÉS de la actualización:", JSON.parse(JSON.stringify(state.posts)));
+        //console.log("postSlice (likePost.fulfilled): Estado 'post' DESPUÉS de la actualización:", JSON.parse(JSON.stringify(state.post)));
+        //console.log("postSlice (likePost.fulfilled): Estado 'userPosts' DESPUÉS de la actualización:", JSON.parse(JSON.stringify(state.userPosts)));
       })
       .addCase(likePost.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
-        console.error("Error al dar/quitar like:", action.payload);
+        //console.error("Error al dar/quitar like:", action.payload);
       });
-      /*.addCase(deletePost.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(deletePost.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.isSuccess = true;
-        state.posts = state.posts.filter(
-          (post) => post._id !== action.payload.id
-        );
-      })
-      .addCase(deletePost.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isError = true;
-        state.message = action.payload;
-      })*/;
-      
   },
 });
+     
+  
+
+       
+        
      
 
 
