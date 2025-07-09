@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { createPost, reset } from '../../features/post/postSlice'; 
+import { createPost, getAll, reset } from '../../features/post/postSlice'; 
 import { Input, Button, Form, Upload, message as AntMessage, Spin, Alert } from 'antd'; 
 import { UploadOutlined } from '@ant-design/icons'; 
 
@@ -20,10 +20,12 @@ const CreatePostForm = () => {
  
   useEffect(() => {
     if (isSuccess) {
-      AntMessage.success(message);
+     // AntMessage.success(message);
       form.resetFields(); 
       setFileList([]); 
       dispatch(reset()); 
+      
+
       //navigate('/'); 
     }
     if (isError) {

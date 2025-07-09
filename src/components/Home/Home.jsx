@@ -13,7 +13,7 @@ const Home = () => {
     <div className="home-page-container">
       <div className="home-create-posts">
         <div className="home-create">
-          <CreatePostForm /> {/* Este componente siempre se muestra */}
+          <CreatePostForm /> 
         </div>
         <div className="posts-wellcome">
           <h2 className="welcome-title">¡Bienvenido a AstroRed!</h2>

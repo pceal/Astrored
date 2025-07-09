@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getById, reset } from "../../features/post/postSlice"; 
-import { Card, Input, Button, Avatar } from "antd"; 
+import { Card, Input, Button,} from "antd"; 
 
 
 const { TextArea } = Input; 

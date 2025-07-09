@@ -1,4 +1,4 @@
-import  { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAll,reset } from '../../features/post/postSlice'; 
 import { Spin, notification } from 'antd'; 
@@ -6,31 +6,21 @@ import Post from '../Post/Post';
 
 
 const Posts = () => {
-  const dispatch = useDispatch();
- 
-  const { posts, isLoading, isError, message } = useSelector((state) => state.posts);
-  console.log("Posts.jsx: Componente renderizado. Longitud actual de 'posts' (desde Redux):", posts.length);
-
-
-
-
+const dispatch = useDispatch();
+const { posts, isLoading, isError, message } = useSelector((state) => state.posts);
+  
   useEffect(() => {
-    
-    
     dispatch(getAll());
 
     return () => {
       dispatch(reset());
-    
     };
   }, [dispatch ]);
 
-
-
   if (isLoading) {
     return (
-      <div style={{ textAlign: 'center', padding: '20px' }}> {/* Contenedor para Spin */}
-        <Spin tip="Buscando..." size="large" /> {/* Aquí usas 'tip' */}
+      <div style={{ textAlign: 'center', padding: '20px' }}> 
+        <Spin tip="Buscando..." size="large" /> 
       </div>
     );
   }

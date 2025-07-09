@@ -75,7 +75,7 @@ GET     /api/search/posts?title=   # Buscar por título
 ├── Header.jsx
 └── Footer.jsx
 
-
+```
 ## 🌐 Rutas (React Router)
 
 ```text
@@ -85,7 +85,8 @@ GET     /api/search/posts?title=   # Buscar por título
 /profile       → Perfil del usuario 
 /post/:id      → Detalles del post 
 /search        → Buscar publicaciones 
----
+
+```
 
 ## 🧱 Tecnologías
 
@@ -163,34 +164,34 @@ Estos son los comandos para inicializar tu proyecto y añadir las librerías nec
 
 Bash
 
-# Para crear un nuevo proyecto Vite (si aún no lo tienes)
+### Para crear un nuevo proyecto Vite (si aún no lo tienes)
 npm create vite@latest
 
-# Para instalar CORS en el backend (si no lo has hecho)
+### Para instalar CORS en el backend (si no lo has hecho)
 npm i cors
 
-# Para instalar SASS como dependencia de desarrollo
+### Para instalar SASS como dependencia de desarrollo
 npm install sass --save-dev
 
-# Para instalar React Router DOM v6
+### Para instalar React Router DOM v6
 npm install react-router-dom@6
 
-# Para instalar React Router (si lo necesitas por separado, aunque react-router-dom@6 ya lo incluye)
+### Para instalar React Router (si lo necesitas por separado, aunque react-router-dom@6 ya lo incluye)
 npm install react-router
 
-# Para instalar React Icons
+### Para instalar React Icons
 npm install react-icons --save
 
-# Para instalar Ant Design
+### Para instalar Ant Design
 npm install antd
 
-# Para instalar Axios (cliente HTTP)
+### Para instalar Axios (cliente HTTP)
 npm install axios
 
-# Para instalar Redux Toolkit y React Redux
+### Para instalar Redux Toolkit y React Redux
 npm i @reduxjs/toolkit react-redux
 
-# Parche para compatibilidad de Ant Design con React 19 (si usas React 19)
+### Parche para compatibilidad de Ant Design con React 19 (si usas React 19)
 npm install @ant-design/v5-patch-for-react-19
 Crea un archivo .env en la raíz de la carpeta frontend y añade la siguiente variable de entorno:
 
@@ -278,74 +279,7 @@ Mejoras en la accesibilidad.
 📂 Estructura del Proyecto
 Fragmento de código
 
-graph TD
-    A[Astrored] --> B[node_modules]
-    A --> C[public]
-    A --> D[src]
 
-    D --> D1[app]
-    D1 --> D1a[store.js]
-
-    D --> D2[assets]
-    D2 --> D2a[Icons]
-    D2 --> D2b[react.svg]
-
-    D --> D3[components]
-    D3 --> D3a[Admin]
-    D3 --> D3b[CreatePostForm]
-    D3b --> D3b1[CreatePostForm.jsx]
-    D3 --> D3c[Footer]
-    D3c --> D3c1[FooterDeskop]
-    D3c1 --> D3c1a[FooterDeskop.jsx]
-    D3c1 --> D3c1b[FooterDeskop.scss]
-    D3c --> D3c2[FooterMobile]
-    D3 --> D3d[Guards]
-    D3d --> D3d1[AdminZone.jsx]
-    D3d --> D3d2[PrivateZone.jsx]
-    D3 --> D3e[Home]
-    D3e --> D3e1[Home.jsx]
-    D3 --> D3f[Login]
-    D3f --> D3f1[Login.jsx]
-    D3f --> D3f2[Login.scss]
-    D3 --> D3g[Navbar]
-    D3g --> D3g1[NavbarDeskop]
-    D3g1 --> D3g1a[NavbarDeskop.jsx]
-    D3g1 --> D3g1b[NavbarDeskop.scss]
-    D3g --> D3g2[NavbarMobile]
-    D3 --> D3h[Post]
-    D3h --> D3h1[Post.jsx]
-    D3 --> D3i[PostDetail]
-    D3i --> D3i1[PostDetail.jsx]
-    D3 --> D3j[Posts]
-    D3j --> D3j1[Posts.jsx]
-    D3 --> D3k[Profile]
-    D3k --> D3k1[Profile.jsx]
-    D3 --> D3l[Register]
-    D3l --> D3l1[Register.jsx]
-    D3l --> D3l2[Register.scss]
-    D3 --> D3m[Search]
-    D3m --> D3m1[Search.jsx]
-
-    D --> D4[features]
-    D4 --> D4a[auth]
-    D4a --> D4a1[authService.js]
-    D4a --> D4a2[authSlice.js]
-    D4 --> D4b[post]
-    D4b --> D4b1[postService.js]
-    D4b --> D4b2[postSlice.js]
-
-    D --> D5[styles]
-    D5 --> D5a[_colors.scss]
-    D5 --> D5b[App.css]
-    D5 --> D5c[index.css]
-
-    D --> D6[App.jsx]
-    D --> D7[index.html]
-    D --> D8[main.jsx]
-    D --> D9[.gitignore]
-    D --> D10[eslint.config.js]
-    D --> D11[package-lock.json]
-    D --> D12[package.json]
 
 
 
