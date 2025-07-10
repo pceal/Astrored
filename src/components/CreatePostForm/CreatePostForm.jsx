@@ -50,7 +50,7 @@ const CreatePostForm = () => {
       formData.append('images', fileList[0].originFileObj); 
     }
 
-    console.log("Enviando datos:", values);
+  
     dispatch(createPost(formData)); 
   };
 

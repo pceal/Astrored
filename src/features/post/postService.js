@@ -33,18 +33,18 @@ const searchByTitle = async (title) => {
 
 const getPostsByAuthor = async (userId) => {
   const url = `${API_URL}user/${userId}`;
-  console.log("Frontend (postService): Intentando obtener posts del autor desde URL:", url);
+  
   try {
     const response = await axios.get(url);
-    console.log("Frontend (postService): Respuesta exitosa para getPostsByAuthor:", response.data);
+    
     return response.data;
   } catch (error) {
-    console.error("Frontend (postService): Error al obtener posts del autor:", error.response ? error.response.data : error.message);
+    
     throw error; // Re-lanza el error para que pueda ser manejado por el componente que llama
   }
 };
 const likePost = async (postId, token) => {
-   console.log("Frontend (postService - likePost): Token recibido en la función:", token);
+   
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -52,13 +52,13 @@ const likePost = async (postId, token) => {
   };
 
   const url = `${API_URL}${postId}/like`; 
-  console.log("Frontend (postService): Llamando a likePost desde URL:", url);
+ 
   try {
     const res = await axios.put(url, {}, config); 
-    console.log("Frontend (postService): Respuesta exitosa para likePost:", res.data);
+    
     return res.data; 
   } catch (error) {
-    console.error("Frontend (postService): Error al dar/quitar like:", error.response ? error.response.data : error.message);
+    
     throw error;
   }
 };
