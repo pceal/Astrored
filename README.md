@@ -128,18 +128,21 @@ GET     /api/search/posts?title=   # Buscar por título
 
  
    git clone https://github.com/tu-usuario/nombre-repo.git
-Navega a la carpeta del backend e instala las dependencias:
+2. Navega a la carpeta del backend e instala las dependencias:
 
 Bash
 
 cd backend
 npm install
-Crea un archivo .env en la raíz de la carpeta backend y añade las siguientes variables de entorno:
+3. Crea un archivo .env en la raíz de la carpeta backend y añade las siguientes variables de entorno:
 
 PORT=8080
+
 MONGO_URI=mongodb://localhost:27017/astrored # O tu URI de MongoDB Atlas
+
 JWT_SECRET=tu_secreto_jwt_muy_seguro # ¡Cambia esto por una cadena aleatoria y compleja!
-Importante: Asegúrate de que tu index.js o server.js en el backend incluya la configuración de CORS:
+
+- Importante: Asegúrate de que tu index.js o server.js en el backend incluya la configuración de CORS:
 
 JavaScript
 
@@ -152,14 +155,15 @@ Bash
 npm start
 El backend se ejecutará en http://localhost:8080 (o el puerto que hayas configurado).
 
-💻 Frontend
+ ### 💻 Frontend
 Abre una nueva terminal, navega a la carpeta del frontend e instala las dependencias:
 
 Bash
 
 cd frontend
 npm install
-Guía de Configuración del Entorno de Desarrollo y Dependencias:
+
+## Guía de Configuración del Entorno de Desarrollo y Dependencias:
 Estos son los comandos para inicializar tu proyecto y añadir las librerías necesarias:
 
 Bash
@@ -193,7 +197,8 @@ npm i @reduxjs/toolkit react-redux
 
 ### Parche para compatibilidad de Ant Design con React 19 (si usas React 19)
 npm install @ant-design/v5-patch-for-react-19
-Crea un archivo .env en la raíz de la carpeta frontend y añade la siguiente variable de entorno:
+
+## crea un archivo .env en la raíz de la carpeta frontend y añade la siguiente variable de entorno:
 
 REACT_APP_BACKEND_URL=http://localhost:8080
 Inicia la aplicación frontend:
@@ -201,80 +206,81 @@ Inicia la aplicación frontend:
 Bash
 
 npm start
-La aplicación frontend se abrirá en tu navegador en el puerto por defecto de React.
 
-💡 Uso de la Aplicación
-Registro/Inicio de Sesión: Accede a la aplicación y regístrate o inicia sesión con tus credenciales.
+- La aplicación frontend se abrirá en tu navegador en el puerto por defecto de React.
 
-Ver Publicaciones: Explora la página principal (/home) para ver todas las publicaciones.
+## 💡 Uso de la Aplicación
+- Registro/Inicio de Sesión: Accede a la aplicación y regístrate o inicia sesión con tus credenciales.
 
-Crear Publicación: Una vez autenticado, podrás crear nuevas publicaciones desde la sección correspondiente (/addpost o un botón en Home).
+- Ver Publicaciones: Explora la página principal (/home) para ver todas las publicaciones.
 
-Interactuar: Da "Me gusta" en las publicaciones.
+- Crear Publicación: Una vez autenticado, podrás crear nuevas publicaciones desde la sección correspondiente (/addpost o un botón en Home).
 
-Buscar: Utiliza la barra de búsqueda para encontrar publicaciones por su título.
+- Interactuar: Da "Me gusta" en las publicaciones.
 
-Gestionar Perfil: Visita /profile para ver tus datos y tus publicaciones.
+- Buscar: Utiliza la barra de búsqueda para encontrar publicaciones por su título.
 
-Gestionar Publicaciones: Si eres el autor de una publicación, podrás editarla o eliminarla.
+- Gestionar Perfil: Visita /profile para ver tus datos y tus publicaciones.
 
-📏 Reglas de Código
-Para mantener la calidad y la legibilidad del código, se han establecido las siguientes reglas:
+- Gestionar Publicaciones: Si eres el autor de una publicación, podrás editarla o eliminarla.
 
-Componentes: Los componentes de React no deben exceder las 400 líneas de código.
+## 📏 Reglas de Código
+- Para mantener la calidad y la legibilidad del código, se han establecido las siguientes reglas:
 
-Funciones: Las funciones individuales no deben exceder las 75 líneas de código.
+- Componentes: Los componentes de React no deben exceder las 400 líneas de código.
 
-✨ Próximas Mejoras / Funcionalidades a Implementar
+- Funciones: Las funciones individuales no deben exceder las 75 líneas de código.
+
+## ✨ Próximas Mejoras / Funcionalidades a Implementar
 Estas son las funcionalidades y mejoras planificadas para futuras iteraciones del proyecto, que enriquecerán aún más la experiencia de usuario y la robustez de la aplicación:
 
-CRUD Completo de Comentarios:
+- CRUD Completo de Comentarios:
 
-Posibilidad de crear, leer, actualizar y eliminar comentarios.
+- Posibilidad de crear, leer, actualizar y eliminar comentarios.
 
-Solo el autor de un comentario podrá editarlo o eliminarlo.
+- Solo el autor de un comentario podrá editarlo o eliminarlo.
 
-Likes en Comentarios:
+- Likes en Comentarios:
 
-Los usuarios podrán dar "Me gusta" a los comentarios de los posts.
+- Los usuarios podrán dar "Me gusta" a los comentarios de los posts.
 
-Buscador de Perfiles de Usuario:
+- Buscador de Perfiles de Usuario:
 
-Extender la funcionalidad de búsqueda para incluir perfiles de usuario.
+- Extender la funcionalidad de búsqueda para incluir perfiles de usuario.
 
-Funcionalidades de Seguidores/Seguidos:
+- Funcionalidades de Seguidores/Seguidos:
 
-El usuario podrá seguir a otros usuarios y tener seguidores.
+- El usuario podrá seguir a otros usuarios y tener seguidores.
 
-En el perfil del usuario, se podrá ver el número de seguidores y a cuántos usuarios sigue.
+- En el perfil del usuario, se podrá ver el número de seguidores y a cuántos usuarios sigue.
 
-El usuario podrá ver quién le sigue y a quién sigue.
+- El usuario podrá ver quién le sigue y a quién sigue.
 
-Posts con Like en Perfil:
+- Posts con Like en Perfil:
 
-En el perfil del usuario, se podrá ver una sección con los posts a los que le ha dado "Me gusta".
+- En el perfil del usuario, se podrá ver una sección con los posts a los que le ha dado "Me gusta".
 
-Gestión de Fotos de Perfil:
+- Gestión de Fotos de Perfil:
 
-Los usuarios podrán subir y cambiar su foto de perfil.
+- Los usuarios podrán subir y cambiar su foto de perfil.
 
-Documentación Interactiva del Backend (Swagger):
+- Documentación Interactiva del Backend (Swagger):
 
-Implementación de Swagger UI para una documentación interactiva y fácil de usar de la API RESTful.
+- Implementación de Swagger UI para una documentación interactiva y fácil de usar de la API RESTful.
 
-Mejoras de Rendimiento en Backend:
+- Mejoras de Rendimiento en Backend:
 
-Optimización de consultas a la base de datos.
+- Optimización de consultas a la base de datos.
 
-Posible implementación de caché.
+- Posible implementación de caché.
 
-Mejoras UI/UX Adicionales:
+- Mejoras UI/UX Adicionales:
 
-Animaciones y transiciones más fluidas.
+- Animaciones y transiciones más fluidas.
 
-Carga diferida (lazy loading) de imágenes y componentes.
+- Carga diferida (lazy loading) de imágenes y componentes.
 
-Mejoras en la accesibilidad.
+- Mejoras en la accesibilidad.
 
 📂 Estructura del Proyecto
 Fragmento de código

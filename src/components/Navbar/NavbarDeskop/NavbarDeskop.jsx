@@ -14,7 +14,7 @@ const { user, isSuccess, isError, message } = useSelector((state) => state.auth)
 
 
   useEffect(() => {
-   console.log("NavbarDeskop - Estado del usuario:", user);
+ 
   }, [user]);
 
   

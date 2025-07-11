@@ -1,11 +1,11 @@
-import React from 'react';
+
 import { Link } from 'react-router-dom';
 import './FooterDeskop.scss'; 
 
 const FooterDeskop = () => {
   return (
     <footer className="footer-deskop">
-      {/* Iconos de astrología como elementos de fondo */}
+      
      
       <svg className="footer-icon icon-aries" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L12 22M2 12H22M17 7L7 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
       <svg className="footer-icon icon-taurus" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C7.58 2 4 5.58 4 10V22M20 10V22M2 17H22" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>

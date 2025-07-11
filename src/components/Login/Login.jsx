@@ -33,12 +33,12 @@ const Login = () => {
         description: `Bienvenido de nuevo, ${user.username || user.email}!`, // Personaliza el mensaje
       });
       navigate("/"); 
-      dispatch(reset()); // Resetea el estado de autenticación después del éxito
+      dispatch(reset());
     }
     if (isError) {
       notification.error({
-        message: 'Error de Login', // Mensaje de error
-        description: message, // Descripción del error desde el estado de Redux
+        message: 'Error de Login', 
+        description: message, 
       });
       dispatch(reset());
     }
@@ -56,12 +56,7 @@ const Login = () => {
     // console.log("formData", formData);
     dispatch(login(formData));
   };
-  /* const scrollToRegister = () => {
-    const registerElement = document.querySelector('.register-container'); // Asume que tu Register tiene esta clase
-    if (registerElement) {
-      registerElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };*/
+
    const handleRegisterClick = () => {
     //console.log("DEBUG: Botón 'Register' presionado. Intentando navegar a /register.");
     navigate('/register'); 

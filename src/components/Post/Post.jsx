@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Card, Avatar, Button} from 'antd'; 
 import { Link } from 'react-router-dom';
 import { likePost } from "../../features/post/postSlice";
@@ -8,10 +8,10 @@ import { HeartFilled, HeartOutlined } from '@ant-design/icons';
 
 const Post = ({ post }) => { 
 
-  console.log("Post.jsx está recibiendo el siguiente objeto 'post':", post);
+  //console.log("Post.jsx está recibiendo el siguiente objeto 'post':", post);
   
   if (!post || typeof post !== 'object' || Object.keys(post).length === 0) {
-    console.warn("Post.jsx: No se recibió un objeto 'post' válido. No se renderizará.");
+    //console.warn("Post.jsx: No se recibió un objeto 'post' válido. No se renderizará.");
     return null;
   }
 
@@ -22,7 +22,7 @@ const Post = ({ post }) => {
   const imageUrl = post.images && Array.isArray(post.images) && post.images.length > 0
     ? `${backendBaseUrl}${post.images[0]}`
     : "https://placehold.co/600x400/cccccc/333333?text=No+Image";
- console.log(`Intentando cargar imagen para post ID: ${post._id || 'N/A'}, Título: ${post.title || 'N/A'}. URL: ${imageUrl}`);
+ //console.log(`Intentando cargar imagen para post ID: ${post._id || 'N/A'}, Título: ${post.title || 'N/A'}. URL: ${imageUrl}`);
 
   const authorName = post.author?.username || "Usuario Desconocido";
   const authorImage = post.author?.image || `https://api.dicebear.com/7.x/initials/svg?seed=${authorName}`;
@@ -30,7 +30,7 @@ const Post = ({ post }) => {
 const postDate = post.createdAt ? new Date(post.createdAt).toLocaleDateString() : "Fecha Desconocida";
 const dispatch = useDispatch();
 const { user } = useSelector((state) => state.auth);
-console.log("Post.jsx: Estado actual del usuario (desde Redux):", user); 
+//console.log("Post.jsx: Estado actual del usuario (desde Redux):", user); 
   const hasLiked = user && post.likes && Array.isArray(post.likes) && post.likes.includes(user._id);
    
   const handleLike = (e) => {
