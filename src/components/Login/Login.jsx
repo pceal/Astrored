@@ -22,15 +22,11 @@ const Login = () => {
   const { user, isSuccess, isError, message } = useSelector((state) => state.auth);
 
      useEffect(() => {
-     //console.log("DEBUG useEffect (Login):");
-    //console.log("  isSuccess:", isSuccess);
-    //console.log("  isError:", isError);
-    //console.log("  user:", user);
-    //console.log("  message:", message);
-    if (isSuccess && user) { // Verifica también que el usuario exista
+ 
+    if (isSuccess && user) { 
       notification.success({
-        //message: 'Login Exitoso', // Mensaje de éxito para el usuario
-        description: `Bienvenido de nuevo, ${user.username || user.email}!`, // Personaliza el mensaje
+       
+        description: `Bienvenido de nuevo, ${user.username || user.email}!`, 
       });
       navigate("/"); 
       dispatch(reset());
@@ -53,12 +49,12 @@ const Login = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    // console.log("formData", formData);
+   
     dispatch(login(formData));
   };
 
    const handleRegisterClick = () => {
-    //console.log("DEBUG: Botón 'Register' presionado. Intentando navegar a /register.");
+    
     navigate('/register'); 
   };
 

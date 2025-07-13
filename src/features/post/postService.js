@@ -40,7 +40,7 @@ const getPostsByAuthor = async (userId) => {
     return response.data;
   } catch (error) {
     
-    throw error; // Re-lanza el error para que pueda ser manejado por el componente que llama
+    throw error; 
   }
 };
 const likePost = async (postId, token) => {

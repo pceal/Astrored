@@ -5,9 +5,7 @@ import CreatePostForm from "../CreatePostForm/CreatePostForm";
 import { Link } from 'react-router-dom'; // Importa Link
 
 const Home = () => {
-  // Obtenemos el estado 'searchPerformed' de Redux.
-  // Este booleano nos indica si el usuario ha realizado una búsqueda o no.
-  //const { searchTerm } = useSelector((state) => state.posts);
+ 
 
   return (
     <div className="home-page-container">

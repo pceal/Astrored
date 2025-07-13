@@ -35,6 +35,7 @@ const Search = () => {
   };
 
   return (
+    <div className="search-container">
     <div className="p-4 max-w-2xl mx-auto">
       <h2 className="text-2xl font-bold text-center mb-6">Buscar Publicaciones</h2>
       <AntdSearch
@@ -77,6 +78,7 @@ const Search = () => {
         <p className="text-center text-gray-600">Introduce un término para buscar publicaciones.</p>
       )}
     </div>
+     </div>
   );
 };
 

@@ -50,8 +50,7 @@ const Register = () => {
         description: "Password do not match",
       });
     } else {
-      // console.log("formData", formData);
-      // console.log("DEBUG: formData antes de dispatch:", formData);
+    
       dispatch(register(formData));
     }
   };

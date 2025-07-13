@@ -1,4 +1,4 @@
-// src/features/post/postSlice.js
+
 
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import postService from "./postService"; 
@@ -261,9 +261,9 @@ export const postSlice = createSlice({
         
         const postIndexInPosts = state.posts.findIndex(post => post._id === action.payload._id);
         if (postIndexInPosts !== -1) {
-          // Si el post se encuentra, reemplázalo con el objeto actualizado recibido del backend
+          
           state.posts[postIndexInPosts] = action.payload; 
-          //console.log("postSlice (likePost.fulfilled): Post actualizado en el array 'posts'.");
+          
         } else {
           //console.warn("postSlice (likePost.fulfilled): Post no encontrado en el array 'posts' para actualizar. ID:", action.payload._id);
         }

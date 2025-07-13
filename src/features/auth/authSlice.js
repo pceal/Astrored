@@ -38,8 +38,8 @@ export const authSlice = createSlice({
         state.isSuccess = true; 
         state.user = null;
         state.token = null;
-        state.message = "Sesión cerrada correctamente"; // Mensaje de éxito para el logout
-        localStorage.removeItem("user"); // Limpia localStorage
+        state.message = "Sesión cerrada correctamente"; 
+        localStorage.removeItem("user"); 
         localStorage.removeItem("token"); ;
       })
       .addCase(register.fulfilled, (state, action) => {
@@ -58,7 +58,7 @@ export const register = createAsyncThunk("auth/register", async (userData, thunk
     const message = (error.response && error.response.data && error.response.data.message) ||
                     (error.response && error.response.data && error.response.data.errors && error.response.data.errors[0]) ||
                     error.message || error.toString();
-    return thunkAPI.rejectWithValue(message); // action.payload del rejected
+    return thunkAPI.rejectWithValue(message); 
   }
 });
 
@@ -68,23 +68,23 @@ export const login = createAsyncThunk("auth/login", async (userData, thunkAPI) =
     return await authService.login(userData);
   } catch (error) {
     console.error("Error en thunk de login:", error);
-    const message = (error.response && error.response.data && error.response.data.msg) || // Backend envía 'msg'
+    const message = (error.response && error.response.data && error.response.data.msg) || 
                     (error.response && error.response.data && error.response.data.message) ||
                     error.message || error.toString();
-    return thunkAPI.rejectWithValue(message); // Para que login.rejected se dispare
+    return thunkAPI.rejectWithValue(message); 
   }
 });
 
 export const logout = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
   try {
-    // authService.logout() podría no necesitar un argumento, si solo limpia el token en el backend
+   
     await authService.logout(); 
-    // No retorna nada aquí, ya que el fulfilled solo necesita saber que se completó
+   
   } catch (error) {
     console.error("Error en thunk de logout:", error);
     const message = (error.response && error.response.data && error.response.data.message) ||
                     error.message || error.toString();
-    return thunkAPI.rejectWithValue(message); // Para manejar errores de logout en el slice
+    return thunkAPI.rejectWithValue(message); 
   }
 });
 export const { reset } = authSlice.actions;
